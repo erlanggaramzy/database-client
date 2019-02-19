@@ -2,11 +2,14 @@ const create = require("./create");
 const findAll = require("./find-all");
 const findById = require("./find-by-id");
 const findBy = require("./find-by");
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://me:password69@ds241723.mlab.com:41723/acastore', {useNewUrlParser: true});
 
 const readline = require('readline').createInterface({
   input: process.stdin,
   output: process.stdout
-})
+});
 
 printMenu();
 function printMenu(){
@@ -63,14 +66,14 @@ function createThing(){
 }
 function findAllThings(){
   findAll((data)=>{
-    //show data
+    console.log(data);
     printMenu();
   });
 }
 function findThingById(){
   readline.question("What is the id?", function(answer) {
     findById(answer,(result)=>{
-      //print the result
+      // console.log(result)
       printMenu();
     });
   });
@@ -80,7 +83,7 @@ function findThingById(){
 function findThing(){
   readline.question("What name do you want to find?", function(answer) {
     findBy(answer,(result)=>{
-      //print the result
+      console.log(data);
       printMenu();
     });
   });

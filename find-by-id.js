@@ -1,6 +1,10 @@
+const Kitten = require( "./models/kittenModel");
 
 function findById(id, done){
-    done();
+    Kitten.find(id, function(err, kittens) {
+        done(kittens);
+    });
+    
 }
 
 
